@@ -7,47 +7,56 @@ class Slack::CommandsController < ApplicationController
   end
 
   def handle_incidents
-    Rails.logger.info '------'
+    Rails.logger.info '---HANDLE INCIDENTS---'
     Rails.logger.info params
     if params["text"] == 'declare'
-    json = declare
-    Rails.logger.info '------'
-    Rails.logger.info json
-
+      declare
+      return
     elsif params["text"] == 'resolve'
-      json = resolve
+      resolve
+      return
     else
-      json = { text: 'Invalid command!'}
+      # json = { text: 'Invalid command!'}
+      create
+      return
     end
-
-    render json: json
   end
 
   def create_incident
-    Rails.logger.info '---CREATE INCIDENT---'
-    Rails.logger.info params
-    Rails.logger.info params['payload']
-    title = params['payload']['state']['title_input']['value']
-    description = params['payload']['state']['description_input']['value']
-    severity = params['payload']['actions'][0]['selected_option']['text']
-    creator = params['payload']['user']['username']
-    #Rails.logger.info payload
-    Rails.logger.info title
-    Rails.logger.info description
-    Rails.logger.info severity
-    Rails.logger.info creator
-    # incident = Incident.new(incident_params)
+    incident = Incident.new(
+      title: title, description: description,
+      severity: severity, creator: creator
+    )
 
-    # respond_to do |format|
-    #   if incident.save
-    #     format.json { render json: incident, status: :created, location: incident }
-    #   else
-    #     format.json { render json: incident.errors, status: :unprocessable_entity }
-    #   end
-    # end 
+    if incident.save
+      json = { text: 'Incident created!' }
+      render json: json
+    else
+      json = { text: 'Incident creation error!', status: :unprocessable_entity}
+      render json: json
+    end
   end
 
   private
+
+  def json_payload
+    JSON.parse(params['payload'])
+  end
+
+  def title
+    nested_hash_value(json_payload,'title_input')['value']
+  end
+
+  def description
+    nested_hash_value(json_payload,'description_input')['value']
+  end
+
+  def severity
+    nested_hash_value(json_payload,'selected_option')['value']
+  end
+  def creator
+    json_payload['user']['username']
+  end
 
   # def incident_params
   #   params.require(:payload)
@@ -128,6 +137,16 @@ class Slack::CommandsController < ApplicationController
         }
       ]
     }
+  end
+
+  def nested_hash_value(obj,key)
+    if obj.respond_to?(:key?) && obj.key?(key)
+      obj[key]
+    elsif obj.respond_to?(:each)
+      r = nil
+      obj.find{ |*a| r=nested_hash_value(a.last,key) }
+      r
+    end
   end
 
   def resolve
