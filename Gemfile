@@ -6,6 +6,7 @@ ruby '2.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 # gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
+
 # Use PGsql as the database for Active Record
 gem 'pg', '~> 1.2.3'
 # Optionally sqlite3 as the database for Active Record
@@ -31,6 +32,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Slack omniauth + slash command gems
 gem 'omniauth-slack', '~> 2.3'
 
 group :development, :test do
