@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/auth/slack/callback', to: 'sessions#create'
+  post '/slack/command', to: 'slack/commands#create'
 end

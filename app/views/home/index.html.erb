@@ -1,7 +1,7 @@
-<h1>Home#index</h1>
-
-<%= link_to "Sign in with SLACK", "/auth/slack" %>
+<h1>SlackBot Incidents</h1>
 
 <% if @current_user %>
-  <h1>Hi, <%= @current_user.full_name%></h1>
+  <p>Hi, <%= @current_user.full_name %>!</p>
+<% else %>
+  <%= link_to "Sign in with SLACK", "/auth/slack" %>
 <% end %>
