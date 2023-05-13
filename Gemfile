@@ -35,6 +35,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Slack omniauth + slash command gems
 gem 'omniauth-slack', '~> 2.3'
 gem 'slack-ruby-client'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
