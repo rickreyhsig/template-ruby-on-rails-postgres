@@ -25,7 +25,7 @@ class Slack::CommandsController < ApplicationController
     incident = Incident.new(
       title: title, description: description,
       severity: severity, creator: creator,
-      status: open
+      status: 'open'
     )
 
     if incident.save

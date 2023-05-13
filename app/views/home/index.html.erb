@@ -1,7 +1,0 @@
-<h1>SlackBot Incidents</h1>
-
-<% if @current_user %>
-  <p>Hi, <%= @current_user.full_name %>!</p>
-<% else %>
-  <%= link_to "Sign in with SLACK", "/auth/slack" %>
-<% end %>
