@@ -32,9 +32,11 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# Slack omniauth + slash command gems
+# Slack omniauth + ruby-client gems
 gem 'omniauth-slack', '~> 2.3'
 gem 'slack-ruby-client'
+
+# Figaro gem for ENV vars
 gem 'figaro'
 
 group :development, :test do

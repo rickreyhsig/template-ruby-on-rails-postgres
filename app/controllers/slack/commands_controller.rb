@@ -10,26 +10,30 @@ class Slack::CommandsController < ApplicationController
     Rails.logger.info '---HANDLE INCIDENTS---'
     Rails.logger.info params
     if params["text"] == 'declare'
-      declare
-      return
+      json = declare
     elsif params["text"] == 'resolve'
-      resolve
-      return
+      json = resolve
     else
-      # json = { text: 'Invalid command!'}
+      json = { text: 'Invalid command!'}
       create
-      return
     end
+
+    render json: json
   end
 
   def create_incident
+    slack_client ||= Slack::Web::Client.new
     incident = Incident.new(
       title: title, description: description,
-      severity: severity, creator: creator
+      severity: severity, creator: creator,
+      status: open
     )
 
     if incident.save
-      json = { text: 'Incident created!' }
+      channel_name = "incident_#{incident.id}"
+      json = { text: 'Incident created!' + channel_name }
+      response = slack_client.conversations_create(name:
+        channel_name)
       render json: json
     else
       json = { text: 'Incident creation error!', status: :unprocessable_entity}
@@ -54,6 +58,7 @@ class Slack::CommandsController < ApplicationController
   def severity
     nested_hash_value(json_payload,'selected_option')['value']
   end
+
   def creator
     json_payload['user']['username']
   end
