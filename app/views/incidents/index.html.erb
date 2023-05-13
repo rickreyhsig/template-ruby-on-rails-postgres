@@ -1,34 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rootly SlackBot Incidents</h1>
+<h1 class="font-black text-2xl title">Rootly SlackBot Incidents</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Incident ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Severity</th>
-      <th>Creator</th>
-      <th>Status</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @incidents.each do |incident| %>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
       <tr>
-        <td><%= incident.id %></td>
-        <td><%= incident.title %></td>
-        <td><%= incident.description %></td>
-        <td><%= incident.severity %></td>
-        <td><%= incident.creator %></td>
-        <td><%= incident.status %></td>
-        <td><%= link_to 'Show', incident %></td>
-        <td><%= link_to 'Edit', edit_incident_path(incident) %></td>
-        <td><%= link_to 'Destroy', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">ID</th>
+        <th scope="col" class="px-6 py-3 text-center">Title</th>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">Description</th>
+        <th scope="col" class="px-6 py-3 text-center">Severity</th>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">Creator</th>
+        <th scope="col" class="px-6 py-3 text-center">Status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @incidents.each do |incident| %>
+        <tr class="border-b border-gray-200 dark:border-gray-700">
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"><%= incident.id %></td>
+          <td class="px-6 py-4"><%= incident.title %></td>
+          <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800"><%= incident.description %></td>
+          <td class="px-6 py-4"><%= incident.severity %></td>
+          <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800"><%= incident.creator %></td>
+          <td class="px-6 py-4 text-center"><%= incident.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
