@@ -1,14 +1,13 @@
 class Slack::CommandsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def create
-    json = { text: 'Hello World!!' }
-    render json: json
-  end
+=begin
+  PGsql GITPOD |
+  https://github.com/gitpod-samples/template-ruby-on-rails-postgres
+=end
+
 
   def handle_incidents
-    Rails.logger.info '---HANDLE INCIDENTS---'
-    Rails.logger.info params
     if params["text"] == 'declare'
       json = declare
     elsif params["text"] == 'resolve'
@@ -63,15 +62,7 @@ class Slack::CommandsController < ApplicationController
     json_payload['user']['username']
   end
 
-  # def incident_params
-  #   params.require(:payload)
-  #         .permit(:title, :description, :severity, :creator)
-  #         .allow(severity: %w[sev0 sev1 sev2])
-
-  # end
-
   def declare
-    Rails.logger.info '---DECLARE---'
     json = {
       "blocks": [
         {
@@ -155,7 +146,16 @@ class Slack::CommandsController < ApplicationController
   end
 
   def resolve
-    Rails.logger.info '---RESOLVE---'
-    Rails.logger.info params
+    incident_id = params['channel_name'].split('_').last
+    incident = Incident.find_by_id(incident_id)
+
+    if incident
+      incident.update(status: 'closed')
+      json = { text: "Incident #{incident_id} has been resolved!" }
+    else
+      message = "You are not in an incident channel.  "\
+                "This incident channel cannot be resolved!"
+      json = { text: message }
+    end
   end
 end
