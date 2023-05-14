@@ -3,6 +3,7 @@
 set -o errexit
 
 bundle install
+bundle exec rails webpacker:install
 bundle exec rails webpacker:compile
 # Fetch output to see of any errors...
 ./bin/webpack
