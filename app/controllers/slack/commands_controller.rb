@@ -1,12 +1,6 @@
 class Slack::CommandsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-=begin
-  PGsql GITPOD |
-  https://github.com/gitpod-samples/template-ruby-on-rails-postgres
-=end
-
-
   def handle_incidents
     if params["text"] == 'declare'
       json = declare

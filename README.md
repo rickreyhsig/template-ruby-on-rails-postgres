@@ -1,25 +1,32 @@
-# A Ruby on Rails with Postgres template on Gitpod
+## Incident Slackbot
 
-This is a [Ruby on Rails with Postgres](https://rubyonrails.org) template configured for ephemeral cloud development environments on [Gitpod](https://www.gitpod.io/).
+Requirements |
+- https://rootly.notion.site/Slack-Bot-Interview-challenge-149ac7ce0dce469ca24870c0e90c7006
 
-## Next Steps
+Author Contact:
+[Ricardo Kreyhsig](mailto:rickreyhsig@gmail.com)
 
-Click the button below to start a new development environment:
+### [Click here to see the Video Review](LINK_TO_LOOM_VIDEO)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/template-ruby-on-rails-postgres)
 
-## Get Started With Your Own Project
+## Screenshots
+![alt text](assets/swagger_demo.png)
 
-### A new project
 
-Click the above "Open in Gitpod" button to start a new workspace. Once you're ready to push your first code changes, Gitpod will guide you to fork this project so you own it.
+## Libraries / Tools Used
 
-### An existing project
+- RoR 6
+- Ruby 2.7.3
+- TailwindCSS
+- Turbo
 
-To get started with Ruby on Rails with Postgres on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
+## Setup
 
-## Notes & caveats
+No setup needed.  The app has been deployed on Render.
+Accesible [here](https://mysite-mr22.onrender.com/)
 
-* The template was generated using `rails new . -d postgres`
-* [./gitpod.yml](./.gitpod.yml) launches the rails server bound to `0.0.0.0` so that the server is accessible in Gitpod. The default configuration binds to `localhost`.
-* [config/environments/development.rb](./config/environments/development.rb) has been configured with `config.hosts.clear` to enable requests to the Gitpod subdomain. In this template, the Ruby on Rails configuration interface has been set to private. If this setting is changed to the public then anyone will be able to connect to the administration interface if they know the workspace name.
+
+## Future Work
+
+1. Setup Rspec tests
+
