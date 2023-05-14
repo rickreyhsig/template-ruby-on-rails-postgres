@@ -4,7 +4,7 @@ set -o errexit
 
 bundle install
 bundle exec rails webpacker:install
-bundle exec rails webpacker:compile
+RAILS_ENV=production rails assets:precompile
 yarn add tailwindcss
 # Fetch output to see of any errors...
 ./bin/webpack
