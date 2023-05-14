@@ -3,7 +3,7 @@ class IncidentsController < ApplicationController
 
   # GET /incidents or /incidents.json
   def index
-    @incidents = Incident.all
+    @incidents = Incident.order("#{params[:column]} #{params[:direction]}")
   end
 
   # GET /incidents/1 or /incidents/1.json
@@ -58,13 +58,14 @@ class IncidentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_incident
-      @incident = Incident.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def incident_params
-      params.require(:incident).permit(:title, :description, :severity, :creator, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_incident
+    @incident = Incident.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def incident_params
+    params.require(:incident).permit(:title, :description, :severity, :creator, :status)
+  end
 end

@@ -1,0 +1,40 @@
+<h1 class="font-black text-2xl title">Rootly SlackBot Incidents</h1>
+
+<%= turbo_frame_tag "incidents", class: "relative overflow-x-auto shadow-md sm:rounded-lg" do %>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">
+          <%= sort_link(column: "id", label: "id") %>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%= sort_link(column: "title", label: "title") %>
+        </th>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">
+          <%= sort_link(column: "description", label: "description") %>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%= sort_link(column: "severity", label: "severity") %>
+        </th>
+        <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-center">
+          <%= sort_link(column: "creator", label: "creator") %>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%= sort_link(column: "status", label: "status") %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @incidents.each do |incident| %>
+        <tr class="border-b border-gray-200 dark:border-gray-700">
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"><%= incident.id %></td>
+          <td class="px-6 py-4"><%= incident.title %></td>
+          <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800"><%= incident.description %></td>
+          <td class="px-6 py-4"><%= incident.severity %></td>
+          <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800"><%= incident.creator %></td>
+          <td class="px-6 py-4 text-center"><%= incident.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
