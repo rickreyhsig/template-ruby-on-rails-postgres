@@ -145,11 +145,18 @@ class Slack::CommandsController < ApplicationController
 
     if incident
       incident.update(status: 'closed')
-      json = { text: "Incident #{incident_id} has been resolved!" }
+      resolution_time = resolution_time(incident)
+      message = "Incident #{incident_id} has been resolved! "\
+                "It took #{resolution_time} hours to resolve."
+      json = { text: message }
     else
       message = "You are not in an incident channel.  "\
                 "This incident channel cannot be resolved!"
       json = { text: message }
     end
+  end
+
+  def resolution_time(incident)
+    ((Time.zone.now - incident.created_at)/60/60).round(1)
   end
 end
