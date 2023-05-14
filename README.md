@@ -6,7 +6,7 @@ Requirements
 Author Contact:
 [Ricardo Kreyhsig](mailto:rickreyhsig@gmail.com)
 
-### [Click here to see the Video Review]([LINK_TO_LOOM_VIDEO](https://www.loom.com/share/d16b152fbbe5476dabfe4575cc6e1b26))
+### [Click here to see the Video Review](https://www.loom.com/share/d16b152fbbe5476dabfe4575cc6e1b26)
 
 
 ## Screenshots
