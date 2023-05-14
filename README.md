@@ -1,6 +1,6 @@
 ## Incident Slackbot
 
-Requirements |
+Requirements
 - https://rootly.notion.site/Slack-Bot-Interview-challenge-149ac7ce0dce469ca24870c0e90c7006
 
 Author Contact:
@@ -10,7 +10,13 @@ Author Contact:
 
 
 ## Screenshots
-![alt text](assets/swagger_demo.png)
+#### Slack Workflow 
+
+<img width="669" alt="Screen Shot 2023-05-13 at 9 55 08 PM" src="https://github.com/rickreyhsig/template-ruby-on-rails-postgres/assets/2385700/c5343446-6dc2-4332-b21f-9fa41a273f4c">
+
+#### App Worfklow
+
+![Screen Shot 2023-05-13 at 9 55 23 PM](https://github.com/rickreyhsig/template-ruby-on-rails-postgres/assets/2385700/07964d27-d72e-4d4e-aa7d-94d60022a9da)
 
 
 ## Libraries / Tools Used
