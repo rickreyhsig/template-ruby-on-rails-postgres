@@ -157,6 +157,6 @@ class Slack::CommandsController < ApplicationController
   end
 
   def resolution_time(incident)
-    ((Time.zone.now - incident.created_at)/60/60).round(1)
+    ((Time.zone.now - incident.created_at)/60/60).round(3)
   end
 end
