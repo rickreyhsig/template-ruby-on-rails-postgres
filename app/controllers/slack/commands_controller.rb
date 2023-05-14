@@ -151,7 +151,7 @@ class Slack::CommandsController < ApplicationController
       json = { text: message }
     else
       message = "You are not in an incident channel.  "\
-                "This incident channel cannot be resolved!"
+                "This channel cannot be resolved!"
       json = { text: message }
     end
   end
